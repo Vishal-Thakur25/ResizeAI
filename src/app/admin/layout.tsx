@@ -1,4 +1,4 @@
-import "@/styles/admin/admin-globals.scss";
+
 import { Metadata } from "next";
 
 export const metadata: Metadata = {

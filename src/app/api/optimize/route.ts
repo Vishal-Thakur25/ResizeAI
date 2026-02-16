@@ -59,7 +59,7 @@ async function handler(req: AuthenticatedRequest) {
         await deductCredits(req.user.userId, 1);
 
         // Return optimized image
-        return new NextResponse(result.buffer, {
+        return new NextResponse(new Uint8Array(result.buffer), {
             headers: {
                 'Content-Type': getImageMimeType(result.format),
                 'Content-Disposition': `attachment; filename="optimized.${result.format}"`,

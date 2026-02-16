@@ -161,6 +161,20 @@ export async function optimizeImage(
 }
 
 /**
+ * AI Wrapper for optimization with defaults (used by API routes)
+ */
+export async function aiOptimize(
+    buffer: Buffer,
+    options: { quality?: number; autoFormat?: boolean; format?: string } = {}
+): Promise<ImageProcessingResult & { compressionRatio: number }> {
+    return optimizeImage(buffer, {
+        quality: options.quality || 80,
+        autoFormat: options.autoFormat !== undefined ? options.autoFormat : true,
+        format: options.format
+    });
+}
+
+/**
  * Resize Image with Preset or Custom Dimensions
  */
 export async function resizeImage(

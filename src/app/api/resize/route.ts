@@ -66,7 +66,7 @@ async function handler(req: AuthenticatedRequest) {
         // Deduct credits
         await deductCredits(req.user.userId, 1);
 
-        return new NextResponse(resizedBuffer, {
+        return new NextResponse(new Uint8Array(resizedBuffer), {
             headers: {
                 'Content-Type': getImageMimeType(metadata.format || 'jpeg'),
                 'Content-Disposition': `attachment; filename="resized.${metadata.format}"`,

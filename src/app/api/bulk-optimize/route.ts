@@ -71,7 +71,7 @@ async function handler(req: AuthenticatedRequest) {
         }
         const zipBuffer = Buffer.concat(chunks);
 
-        return new NextResponse(zipBuffer, {
+        return new NextResponse(new Uint8Array(zipBuffer), {
             headers: {
                 'Content-Type': 'application/zip',
                 'Content-Disposition': 'attachment; filename="optimized-images.zip"',
